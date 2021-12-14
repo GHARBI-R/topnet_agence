@@ -27,11 +27,11 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                         <button name="action_disponible" type="object" string="Disponible" class="oe_highlight"
+                        <button name="action_disponible" type="object" string="Disponible" class="oe_highlight"
                                 groups="topnet_agence.group_topnet_agent"/>
                         <button name="action_abscent" type="object" string="Abscent" class="oe_highlight"
                                 groups="topnet_agence.group_topnet_agent"/>
-                        <field name="state" widget="statusbar" statusbar_visible="disponible,abscent" />
+                        <field name="state" widget="statusbar" statusbar_visible="disponible,abscent"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -78,10 +78,12 @@
                         </group>
                         <notebook>
                             <page string="Contacts / Adresses">
-                                <field name="nom"/>
-                                <field name="prenom"/>
-                                <field name="matricule"/>
-                                <field name="role"/>
+                                <group>
+                                    <field name="nom"/>
+                                    <field name="prenom"/>
+                                    <field name="matricule"/>
+                                    <field name="role"/>
+                                </group>
                             </page>
                             <page string="Rendez-vous">
                                 <field name="rdv_ids"/>
