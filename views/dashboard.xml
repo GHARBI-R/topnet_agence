@@ -54,11 +54,12 @@
         <field name="view_id" ref="dashboard_form_view"/>
     </record>
 
+
     <menuitem
         name="Statistiques"
         parent="topnet_agence.topnet_menu_root"
         action="topnet_dashboard"
         sequence="1"
-        id="menu_dashboard"/>
+        id="menu_dashboard" groups="topnet_agence.group_topnet_responsable"/>
 
 </odoo>
