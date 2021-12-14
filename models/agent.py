@@ -25,7 +25,7 @@ class Agent(models.Model):
 
     user_id = fields.Many2one('res.users', ondelete='set null', string="User", index=True)
     abonnements_ids = fields.One2many(comodel_name='abonnement', inverse_name='agent_id', string="agent")
-    rdv_ids = fields.One2many(comodel_name='rdv', inverse_name='rdv_clt', string="Rendez-vous")
+    rdv_ids = fields.One2many(comodel_name='rdv', inverse_name='agent_id', string="Rendez-vous")
 
     nom = fields.Char(string="Nom", required=True)
     prenom = fields.Char(string="Prenom", required=True)

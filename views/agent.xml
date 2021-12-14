@@ -83,8 +83,8 @@
                                 <field name="matricule"/>
                                 <field name="role"/>
                             </page>
-                            <page string="Notes internes">
-                                Ajouter un note interne...
+                            <page string="Rendez-vous">
+                                <field name="rdv_ids"/>
                             </page>
 
                             <page string="Gestion des abonnements">

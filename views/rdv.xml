@@ -56,7 +56,7 @@
                 <field name="motif"/>
                 <field name="rdv_date_debut"/>
                 <field name="rdv_date_fin"/>
-                <field name="client_id"/>
+                <field name="email_clt_rel"/>
                 <field name="agent_id"/>
 
 
@@ -85,7 +85,7 @@
                     <field name="motif"/>
                     <field name="rdv_date_debut"/>
                     <field name="rdv_date_fin"/>
-                    <field name="client_id"/>
+                    <field name="email_clt_rel"/>
                     <field name="agent_id"/>
                 </group>
 
