@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data noupdate="1">
+        <record model="ir.module.category" id="module_category_topnet">
+            <field name="name">Topnet Management</field>
+            <field name="description">Category For actors</field>
+
+        </record>
+        <!--groupe coordinateur -->
+        <record id="group_topnet_coor" model="res.groups">
+            <field name="name">Coordinateur</field>
+            <field name="category_id" ref="module_category_topnet"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!--groupe des clients -->
+        <record id="group_topnet_client" model="res.groups">
+            <field name="name">Client</field>
+            <field name="category_id" ref="module_category_topnet"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!--groupe des agents -->
+        <record id="group_topnet_agent" model="res.groups">
+            <field name="name">Agent</field>
+            <field name="category_id" ref="module_category_topnet"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!--groupe des chefs d'agence -->
+        <record id="group_topnet_chef" model="res.groups">
+            <field name="name">Chef d'agence</field>
+            <field name="category_id" ref="module_category_topnet"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!--groupe des responsables agences -->
+        <record id="group_topnet_responsable" model="res.groups">
+            <field name="name">Responsable agence</field>
+            <field name="category_id" ref="module_category_topnet"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+
+        <record model="ir.rule" id="client_see_his_own_client1">
+            <field name="name">voir seulement ses fiches</field>
+            <field name="model_id" ref="model_client_fiche"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_topnet_client'))]"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="perm_read" eval="1"/>
+        </record>
+        <record model="ir.rule" id="client_see_his_own_abonnements">
+            <field name="name">voir seulement ses abonnements</field>
+            <field name="model_id" ref="model_abonnement"/>
+            <field name="domain_force">[('raison_clt.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_topnet_client'))]"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="perm_read" eval="1"/>
+        </record>
+        <record model="ir.rule" id="client_see_his_own_dossiers">
+            <field name="name">voir seulement ses abonnements</field>
+            <field name="model_id" ref="model_topnet_dossier"/>
+            <field name="domain_force">[('raison_clt1.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_topnet_client'))]"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="perm_read" eval="1"/>
+        </record>
+
+        <record model="ir.rule" id="client_see_his_own_rdv">
+            <field name="name">voir seulement ses rendez-vous</field>
+            <field name="model_id" ref="model_rdv"/>
+            <field name="domain_force">[('rdv_clt.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_topnet_client'))]"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="perm_read" eval="1"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_rdv_kanban">
+        <field name="name">rdv.view.kanban</field>
+        <field name="model">rdv</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="rdv_id"/>
+                <field name="client_id"/>
+                <field name="rdv_date_debut"/>
+                <field name="rdv_date_fin"/>
+                <field name="agent_id"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <ul>
+                                <li>Numero du RDV :
+                                    <field name="rdv_id"/>
+                                </li>
+                                <li>Date_debut :
+                                    <field name="rdv_date_debut"/>
+                                </li>
+                                <li>Date_fin :
+                                    <field name="rdv_date_fin"/>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="rdv_calendar" model="ir.ui.view">
+        <field name="name">rdv.calendar</field>
+        <field name="model">rdv</field>
+        <field name="arch" type="xml">
+            <calendar string="rendez-vous Calendar" date_start="rdv_date_debut" date_stop="rdv_date_fin" color="rdv_id"
+                      mode="month" quick_add="True">
+                <field name="motif"/>
+                <field name="rdv_id"/>
+                <field name="agent_id"/>
+            </calendar>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_rdv_tree">
+        <field name="name">rdv.view.tree</field>
+        <field name="model">rdv</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rdv_id"/>
+                <field name="motif"/>
+                <field name="rdv_date_debut"/>
+                <field name="rdv_date_fin"/>
+                <field name="client_id"/>
+                <field name="agent_id"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="rdv_form_view">
+        <field name="name">rdv From</field>
+        <field name="model">rdv</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                            <h1>
+                                <field name="rdv_id" readonly="1"/>
+                            </h1>
+
+                        </div>
+<!--                <header>-->
+<!--                    <field name="rdv_id"/>-->
+<!--                </header>-->
+                <group>
+
+                    <field name="rdv_raison_rel"/>
+                    <field name="motif"/>
+                    <field name="rdv_date_debut"/>
+                    <field name="rdv_date_fin"/>
+                    <field name="client_id"/>
+                    <field name="agent_id"/>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="rdv_search" model="ir.ui.view">
+        <field name="name">rdv.search</field>
+        <field name="model">rdv</field>
+        <field name="arch" type="xml">
+            <search string="Rendez-vous ">
+                <field name="motif"/>
+                <field name="rdv_id"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+
+    <record id="rdv_action_window" model="ir.actions.act_window">
+        <field name="name">Rendez-vous</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rdv</field>
+        <field name="view_mode">calendar,kanban,tree,form</field>
+
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                add your first RDV !
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Gestion des rendez-vous"
+              id="rdv_menu_root" parent="topnet_menu_root"/>
+    -->
+    <!-- menu categories -->
+
+    <menuitem name="Rendez-vous" id="rdv_menu_cat" parent="rdv_menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="mes rendez-vous" id="rdv_list" parent="rdv_menu_cat"
+              action="rdv_action_window"/>
+
+
+</odoo>

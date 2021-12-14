@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="agence_list_view">
+            <field name="name">agence list</field>
+            <field name="model">topnet.agence</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="Nom_agence"/>
+                    <field name="Delegation"/>
+                    <field name="Adresse"/>
+
+                    <field name="Fax"/>
+                </tree>
+            </field>
+        </record>
+        -->
+        <!-- explicit form view definition -->
+
+        <record model="ir.ui.view" id="agence_list_form">
+            <field name="name">agence form</field>
+            <field name="model">topnet.agence</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="Nom_agence"/>
+                        <field name="Delegation"/>
+                        <field name="Adresse"/>
+                        <field name="Fax"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="agence_action_window">
+            <field name="name">Agence </field>
+            <field name="res_model">topnet.agence</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="Gestion des agences"
+                  id="agence_menu_root" parent="topnet_menu_root"/>
+        -->
+        <!-- menu categories -->
+
+        <menuitem name="Agence" id="agence_menu_cat" parent="agence_menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="Liste des agences" id="agence_list" parent="agence_menu_cat"
+                  action="agence_action_window"/>
+
+
+    </data>
+</odoo>

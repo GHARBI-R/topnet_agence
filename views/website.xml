@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="acess_user_group" model="res.groups">
+        <field name="name">access user</field>
+    </record>
+    <!-- comment creer un menu website (gestion user) -->
+    <record model="website.menu" id="menu_web_client_action_window">
+        <field name="name"> Inscription Client Topnet  </field>
+        <field name="url">/topnet/client/ </field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">50</field>
+    </record>
+
+
+    <template id="client_page" name="Topnet Client">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="row">
+                            <div class='col-md-6'>
+                                <h1>Client Topnet </h1>
+                            </div>
+
+                            <div class="col-md-12">
+                                <form class="row g-3 needs-validation" role="form" action="/creer/client" method="POST"
+                                      validate="True">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name" class="form-label">Nom et Prénom du gérant</label>
+                                                <input type="text" name="name" class="form-control" id="name"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="cin_pass" class="form-label">Numéro CIN/Passeport</label>
+                                                <input type="number" name="cin_pass" class="form-control" id="cin_pass"
+                                                       required="required" />
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email_pri" class="form-label">Email principale</label>
+                                                <input type="email" name="email_pri" class="form-control" id="email_pri"
+                                                       required="required"
+                                                       pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" />
+                                            </div>
+
+                                             <div class="form-group">
+                                                  <label for="activity" class="form-label"> Activity </label>
+                                                <select id="activity" name="activity" class="form-control" required="required">
+                                                    <option value="commerciale">Commerciale</option>
+                                                    <option value="Administratif">Administratif</option>
+                                                    <option value="agricole">Agricole</option>
+                                                    <option value="touristique">Touristique</option>
+                                                </select>
+                                             </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+
+                                                <label for="raison" class="form-label">Raison sociale</label>
+                                                <input type="text" name="raison" class="form-control" id="rasion"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="registre" class="form-label">Registre de commerce</label>
+                                                <input type="text" name="registre" class="form-control" id="registre"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                            <label for="douane" class="form-label">Code en douane</label>
+                                                            <input type="number" name="douane" class="form-control" id="douane"
+                                                                   required="required" minlength="3" maxlength="30" />
+                                                    </div>
+                                                </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="tva" class="form-label">Code TVA</label>
+                                                            <input type="number" name="tva" class="form-control" id="tva"
+                                                                   required="required" minlength="3" maxlength="30" />
+                                                        </div>
+                                            </div>
+
+                                            </div>
+
+
+
+                                                        <label for="Exonéré" class="form-label"> Exonéré </label>
+                                                        <select id="Exonéré" name="Exonéré" class="form-control" required="required">
+                                                            <option value="oui">Oui</option>
+                                                            <option value="non">Non</option>
+                                                        </select>
+
+
+
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="correspondance" class="form-label">Adresse de correspondance </label>
+                                                <input type="text" name="correspondance" class="form-control" id="correspondance"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Ville" class="form-label">Ville </label>
+                                                <input type="text" name="Ville" class="form-control" id="Ville"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="postale" class="form-label">Code postale</label>
+                                                <input type="number" name="postale" class="form-control" id="postale" required="required"
+                                                />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="tel" class="form-label">Télephone</label>
+                                                <input type="number" name="tel" class="form-control" id="tel" required="required"
+                                                />
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="fax" class="form-label">Fax</label>
+                                                <input type="number" name="fax" class="form-control" id="fax" required="required"
+                                                />
+                                            </div>
+
+                                    </div>
+
+
+                                         <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nom" class="form-label">Nom et Prénom Administrateur </label>
+                                                <input type="text" name="nom" class="form-control" id="nom"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email_admi" class="form-label">Email Adminitrateur</label>
+                                                <input type="email" name="email_admi" class="form-control" id="email_admi"
+                                                       required="required"
+                                                       pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="Tel_admi" class="form-label">Tél Administrateur</label>
+                                                <input type="number" name="Tel_admi" class="form-control" id="Tel_admi" required="required"
+                                                />
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="gsm_admi" class="form-label">GSM Administrateur</label>
+                                                <input type="number" name="gsm_admi" class="form-control" id="gsm_admi" required="required"
+                                                />
+                                            </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nom_tech" class="form-label">Nom et Prénom Technique </label>
+                                                <input type="text" name="nom_tech" class="form-control" id="nom_tech"
+                                                       required="required" minlength="3" maxlength="30" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email_tech" class="form-label">Email Technique</label>
+                                                <input type="email" name="email_tech" class="form-control" id="email_tech"
+                                                       required="required"
+                                                       pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="tel_tech" class="form-label">Tél Technique</label>
+                                                <input type="number" name="tel_tech" class="form-control" id="tel_tech" required="required"
+                                                />
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="gsm_tech" class="form-label">GSM Technique</label>
+                                                <input type="number" name="gsm_tech" class="form-control" id="gsm_tech" required="required"
+                                                />
+                                            </div>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                            <button type="submit" class="btn btn-success">Ajouter Inscription</button>
+                                        </div>
+                              </form>
+                            </div>
+                         </div>
+
+            </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+     <template id="client_page_thanks" name="Client Topnet thnaks">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="container pt-3">
+                        <h1>Thanks!</h1>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="alert alert-success" role="status">
+                                    Your message has been sent successfully.
+
+                                </div>
+                                <p>
+                                    We will get back to you shortly.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+
+
+

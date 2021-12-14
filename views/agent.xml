@@ -1,0 +1,141 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="topnet_agence.list">
+            <field name="name">TopnetAgent list</field>
+            <field name="model">agent.fiche</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nom"/>
+                    <field name="prenom"/>
+                    <field name="adresse"/>
+                    <field name="naissance"/>
+                    <field name="num_cin_num_passeport"/>
+                    <field name="matricule"/>
+                    <field name="email"/>
+                    <field name="telephone"/>
+                    <field name="role"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="topnet_agence.form">
+            <field name="name">TopnetAgence form</field>
+            <field name="model">agent.fiche</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <button name="action_disponible" type="object" string="Disponible" class="oe_highlight"
+                                groups="topnet_agence.group_topnet_agent"/>
+                        <button name="action_abscent" type="object" string="Abscent" class="oe_highlight"
+                                groups="topnet_agence.group_topnet_agent"/>
+                        <field name="state" widget="statusbar" statusbar_visible="disponible,abscent" />
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                       options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+
+                                <field name="nom"/>
+                                <field name="prenom"/>
+                            </group>
+                            <group>
+                                <field name="image" widget="image" class="oe_avatar"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="naissance"/>
+                                <field name="adresse" placeholder="Rue...Ville..."/>
+                                <field name="email"/>
+                                <field name="mot_passe" password="True"/>
+                                <field name="c_mot_passe" password="True"/>
+                            </group>
+                            <group>
+                                <field name="num_cin_num_passeport"/>
+                                <field name="matricule"/>
+                                <field name="telephone"/>
+                                <field name="Nom_agence"/>
+                                <field name="agence_deleg"/>
+                                <field name="agence_Adresse"/>
+                                <field name="agence_Fax"/>
+
+                            </group>
+                        </group>
+                        <group>
+                            <field name="role" placeholder="e.x Agent"/>
+                            <!--               <field name="agence" attrs="{'invisible': [('role', '=' , 'agent')]}"-->
+                            <!--                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"  />-->
+                            <!--&lt;!&ndash;               <field name="Agence_id" placeholder="Agence"/> &ndash;&gt;-->
+                        </group>
+                        <notebook>
+                            <page string="Contacts / Adresses">
+                                <field name="nom"/>
+                                <field name="prenom"/>
+                                <field name="matricule"/>
+                                <field name="role"/>
+                            </page>
+                            <page string="Notes internes">
+                                Ajouter un note interne...
+                            </page>
+
+                            <page string="Gestion des abonnements">
+                                <group>
+                                    <field name="abonnements_ids"/>
+
+                                </group>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                    <div class='oe_chatter'>
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <!-- actions opening views on models -->
+        <record model="ir.ui.view" id="topnet_agence.search">
+            <field name="name">TopnetAgent search</field>
+            <field name="model">agent.fiche</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="nom"/>
+                    <field name="prenom"/>
+                    <field name="num_cin_num_passeport"/>
+                    <field name="matricule"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="agents_action_window">
+            <field name="name">Uilisateurs</field>
+            <field name="res_model">agent.fiche</field>
+            <field name="view_mode">kanban,form,tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créer votre premier agent !
+                </p>
+            </field>
+            <!--      <field name="context">{}</field>-->
+            <!--      <field name="domain">[('role', '=', 'agent'),]</field>-->
+        </record>
+
+        <!-- actions -->
+
+        <menuitem name="Espace utilisateurs " id="espace_agent" parent="topnet_menu_root" sequence="20"/>
+        <menuitem name="Liste utilisateurs " id="utilisateurs_topnet" parent="topnet_menu_root"/>
+        <menuitem name="Utilisateurs" id="agent_topnet" parent="espace_agent" action="agents_action_window"/>
+
+    </data>
+</odoo>

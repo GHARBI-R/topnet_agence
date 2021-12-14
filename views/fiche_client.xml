@@ -1,0 +1,179 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="fiche_list">
+            <field name="name">fiche list</field>
+            <field name="model">client.fiche</field>
+            <field name="arch" type="xml">
+                <tree string="Clients">
+                    <field name="name"/>
+                    <field name="cin_pass"/>
+                    <field name="email_pri"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="fiche_form">
+            <field name="name">fiche form</field>
+            <field name="model">client.fiche</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <h1>
+                            <field name="id_contrat" readonly="1"/>
+                        </h1>
+
+                    </header>
+                    <sheet>
+<!--                        <div class="oe_button_box" name="button_box">-->
+<!--                            <button name="action_ab" class="oe_stat_button" type="object" string="Demande Abonnement"-->
+<!--                                    icon="fa-pencil-square-o">-->
+<!--                            </button>-->
+<!--                        </div>-->
+                        <div class="oe_title">
+                            <h1>
+                                <field name="id_contrat" readonly="1"/>
+                            </h1>
+
+                        </div>
+
+                        <group>
+                            <group string="Informations personnelles">
+                                <field name="name"/>
+                                <field name="cin_pass"/>
+                                <field name="email_pri"/>
+                            </group>
+
+                            <group string="Informations de l'entreprise">
+                                <field name="raison"/>
+                                <field name="registre"/>
+                                <field name="tva"/>
+                                <field name="Exonéré" widget="radio"/>
+                                <field name="douane"/>
+                                <field name="activity"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Adresses et coordonnées">
+                                <field name="correspondance"/>
+                                <field name="Ville"/>
+                                <field name="postale"/>
+                                <field name="tel"/>
+                                <field name="fax"/>
+                            </group>
+                            <group string=" Contact Administratif et Financiers">
+                                <field name="nom"/>
+                                <field name="Tel_admi"/>
+                                <field name="gsm_admi"/>
+                                <field name="email_admi"/>
+                            </group>
+                            <group string="Contact technique ">
+                                <field name="nom_tech"/>
+                                <field name="tel_tech"/>
+                                <field name="gsm_tech"/>
+                                <field name="email_tech"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Gestion des abonnements">
+                                <group>
+                                    <field name="abonnements_ids"/>
+
+                                </group>
+                            </page>
+                            <page string="Gestion des dossiers">
+                                <group>
+                                    <field name="dossiers_ids"/>
+
+                                </group>
+                            </page>
+                            <page string="Prise de rendez-vous">
+                                <group>
+                                    <field name="rdvs_ids"/>
+
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class='oe_chatter'>
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="topnet_client_search" model="ir.ui.view">
+            <field name="name">topnet.client.search</field>
+            <field name="model">client.fiche</field>
+            <field name="arch" type="xml">
+                <search string="Chercher un client">
+                   <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_client_kanban">
+            <field name="name">client.view.kanban</field>
+            <field name="model">client.fiche</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="cin_pass"/>
+                    <field name="email_pri"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <ul>
+                                    <li>Nom du client :
+                                        <field name="name"/>
+                                    </li>
+                                    <li>CIN :
+                                        <field name="cin_pass"/>
+                                    </li>
+                                    <li>Email principal :
+                                        <field name="email_pri"/>
+                                    </li>
+                                    <li>
+                                        <field name="id_contrat"/>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="fiche_action_window">
+            <field name="name">Client</field>
+            <field name="res_model">client.fiche</field>
+            <field name="view_mode">kanban,form,tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créer votre premier client !
+                </p>
+            </field>
+        </record>
+
+
+        <!-- Top menu item -->
+        <menuitem name="Topnet" id="topnet_menu_root" sequence="-1"/>
+
+        <!-- menu Espace clients  -->
+        <menuitem name="Espace Client" id="espace_clt" parent="topnet_menu_root" sequence="10"/>
+
+        <!-- actions -->
+        <menuitem name="Inscription Client " id="creation_clients" parent="espace_clt" action="fiche_action_window"/>
+        <menuitem name="Liste des clients " id="liste_clients" parent="espace_clt" action="fiche_action_window"/>
+
+    </data>
+</odoo>

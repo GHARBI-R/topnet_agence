@@ -1,0 +1,189 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="abonnement_list">
+            <field name="name">Demande d'abonnement</field>
+            <field name="model">abonnement</field>
+            <field name="arch" type="xml">
+                <tree string="Demande d'abonnement ">
+                    <field name="id_abonnement"/>
+                    <field name="etat"/>
+                    <field name="installation"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="abonnement_form">
+            <field name="name">abonnement form</field>
+            <field name="model">abonnement</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_pris" type="object" string="Pris en charge" class="oe_highlight"
+                                groups="topnet_agence.group_topnet_agent"/>
+                        <button name="action_valider" type="object" string="validé" class="oe_highlight"
+                                groups="topnet_agence.group_topnet_agent"/>
+                        <button name="action_non_valider" type="object" string="non validé" class="oe_highlight"
+                                groups="topnet_agence.group_topnet_agent"/>
+
+                        <button name="action_raccord" type="object" string="Frais de raccordement" class="oe_highlight"
+                                groups="topnet_agence.group_topnet_client"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="nouveau,pris,valider,raccord,non_valider,dossier"
+                               options="{'clickable':0}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_depot" class="oe_stat_button" type="object" string="Déposer "
+                                    icon="fa-pencil-square-o">
+                            </button>
+                        </div>
+                        <div class="oe_title">
+
+                        </div>
+
+                        <group>
+                            <group string="Informations du client ">
+                                <field name="id_abonnement"/>
+                                <field name="raison_clt_rel"/>
+                                <field name="contrat_clt_rel" groups="topnet_agence.group_topnet_agent"/>
+                            </group>
+
+
+                            <group string="Etat du dossier ">
+                                <field name="etat" attrs="{'readonly':[('topnet_agence.group_topnet_client')]}"/>
+                                <field name="agent_id"/>
+
+<!--                                <field name="agent_rel"/>-->
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Adresse et coordonnées">
+                                <field name="installation"/>
+                                <field name="ville2"/>
+                                <field name="postale2"/>
+                                <field name="tel2"/>
+                                <field name="fax2"/>
+                                <field name="abonnement_date"/>
+
+                            </group>
+                            <group string="Offre  ">
+                                <field name="type_offre"/>
+                                <field name="debit"/>
+
+                            </group>
+                        </group>
+
+                    </sheet>
+                    <div class='oe_chatter'>
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--        <record id="topnet_abonnement_search" model="ir.ui.view">-->
+        <!--            <field name="name">topnet.client.search</field>-->
+        <!--            <field name="model">client.fiche</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search string="Chercher un client">-->
+        <!--                    <field name="name" filter_domain="['|',('name', 'ilike', self),('id_contrat', 'ilike', self)]"/>-->
+        <!--                    <field name="id_contrat"/>-->
+        <!--                    <field name="name"/>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record model="ir.ui.view" id="view_abonnement_kanban">
+            <field name="name">abonnement.view.kanban</field>
+            <field name="model">abonnement</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id_abonnement"/>
+                    <field name="type_offre"/>
+                    <field name="debit"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <ul>
+                                    <li>Numéro d'abonnement :
+                                        <field name="id_abonnement"/>
+                                    </li>
+                                    <li>Offre :
+                                        <field name="type_offre"/>
+                                    </li>
+                                    <li>Débit :
+                                        <field name="debit"/>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- actions opening views on models -->
+        <record id="abonnement_calendar" model="ir.ui.view">
+            <field name="name">topnet.abonnement.calendar</field>
+            <field name="model">abonnement</field>
+            <field name="arch" type="xml">
+                <calendar string="Abonnement Calendar" date_start="abonnement_date" color="id_abonnement" mode="month"
+                          quick_add="True">
+                    <field name="id_abonnement"/>
+                    <field name="type_offre"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="abonnement_action_window">
+            <field name="name">Abonnement</field>
+            <field name="res_model">abonnement</field>
+            <field name="view_mode">kanban,form,tree,graph,calendar</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créer votre premier abonnement !
+                </p>
+            </field>
+        </record>
+
+        <record id="abonnement_graph" model="ir.ui.view">
+            <field name="name">topnet.abonnement.graph</field>
+            <field name="model">abonnement</field>
+            <field name="arch" type="xml">
+                <graph string="Graphique Demandes" type="pie">
+                    <field name="id_abonnement"/>
+                    <field name="etat" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <record id="view_order_form_cust_ref_readonly" model="ir.ui.view">
+            <field name="name">abonnement form</field>
+            <field name="model">abonnement</field>
+            <field name="inherit_id" ref="abonnement_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('topnet_agence.group_topnet_client') ])]"/>
+            <field name="arch" type="xml">
+                <field name='etat' position="attributes">
+                    <attribute name="attrs">{'readonly':1}</attribute>
+                </field>
+            </field>
+        </record>
+
+
+        <!-- Top menu item -->
+        <menuitem name="Topnet" id="topnet_menu_root" sequence="-1"/>
+
+        <!-- menu Espace clients  -->
+        <menuitem name="Espace Abonnement" id="espace_FO" parent="topnet_menu_root" sequence="20"/>
+
+        <!-- actions -->
+        <menuitem name="Abonnement FO " id="abonnement_fo" parent="espace_FO"/>
+        <menuitem name="Liste des abonnement " id="liste_clients" parent="espace_FO" action="abonnement_action_window"/>
+
+    </data>
+</odoo>

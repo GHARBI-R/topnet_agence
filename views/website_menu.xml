@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+
+    <!-- Menu bouton  utilisateur -->
+    <record id="menu_user" model="website.menu">
+      <field name="name">Espace utilisateur</field>
+<!--      <field name="url">/adduser_form</field>-->
+      <field name="parent_id" ref="website.main_menu" />
+      <field name="sequence" type="int">11</field>
+    </record>
+
+    <!-- Menu bouton Ajout client-->
+    <record id="menu_client" model="website.menu">
+      <field name="name">Espaces clients</field>
+<!--      <field name="url">/addsubscription_form</field>-->
+      <field name="parent_id" ref="website.main_menu" />
+      <field name="sequence" type="int">22</field>
+    </record>
+
+<!--    &lt;!&ndash; Menu bouton Suivi demande &ndash;&gt;-->
+<!--    <record id="menu_subscription" model="website.menu">-->
+<!--      <field name="name">suivre mes demandes</field>-->
+<!--      <field name="url">/followdemands</field>-->
+<!--      <field name="parent_id" ref="website.main_menu" />-->
+<!--      <field name="sequence" type="int">33</field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Menu bouton Ajout Contact &ndash;&gt;-->
+<!--    <record id="menu_subscription" model="website.menu">-->
+<!--      <field name="name">Gérer mes contacts</field>-->
+<!--      <field name="url">/CreateContact</field>-->
+<!--      <field name="parent_id" ref="website.main_menu" />-->
+<!--      <field name="sequence" type="int">44</field>-->
+<!--    </record>-->
+
+
+  </data>
+</odoo>

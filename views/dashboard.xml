@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="act_dossiers" model="ir.actions.act_window">
+        <field name="name">Demandes Abonnements </field>
+        <field name="res_model">abonnement</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="topnet_agence.abonnement_graph"/>
+    </record>
+
+    <record id="act_book_abonnement" model="ir.actions.act_window">
+        <field name="name">Book Abonnement</field>
+        <field name="res_model">abonnement</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="topnet_agence.abonnement_calendar"/>
+    </record>
+
+    <record id="act_abonnement_list" model="ir.actions.act_window">
+        <field name="name">Demandes </field>
+        <field name="res_model">abonnement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="dashboard_form_view" model="ir.ui.view">
+        <field name="name">Dashboard Form</field>
+        <field name="model">board.board</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Statistiques">
+                <board style="1-2">
+                    <column>
+                        <action
+                            string="Demandes Abonnement "
+                            name="%(topnet_agence.act_dossiers)d"/>
+                        <action
+                            string="Demandes "
+                            name="%(act_abonnement_list)d"/>
+                    </column>
+                    <column>
+                        <action
+                            string="Demandes d abonnements "
+                            name="%(act_book_abonnement)d"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record id="topnet_dashboard" model="ir.actions.act_window">
+        <field name="name">Statistiques</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="dashboard_form_view"/>
+    </record>
+
+    <menuitem
+        name="Statistiques"
+        parent="topnet_agence.topnet_menu_root"
+        action="topnet_dashboard"
+        sequence="1"
+        id="menu_dashboard"/>
+
+</odoo>
