@@ -28,6 +28,8 @@ class Agence (models.Model):
     Adresse = fields.Char(string="Adresse", required=True)
     Fax = fields.Integer(string="Fax", required=True)
 
+
+
     @api.constrains('Adresse', 'Fax')
     def check_name(self):
         for rec in self:
