@@ -10,24 +10,24 @@ access_agent_coor,access.agent.fiche,topnet_agence.model_agent_fiche,group_topne
 access_agent_clt,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_client,0,0,0,0
 access_agent_agent,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_agent,1,1,1,0
 access_agent_chef,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_chef,1,1,0,0
-access_agent_responsable,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_responsable,1,0,0,0
+access_agent_responsable,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_responsable,0,0,0,0
 
 access_coor_dossier,access.topnet.dossier,topnet_agence.model_topnet_dossier,group_topnet_coor,1,1,1,1
 access_client_dossier,access.topnet.dossier,topnet_agence.model_topnet_dossier,group_topnet_client,1,1,1,1
 access_agent_dossier,access.topnet.dossier,topnet_agence.model_topnet_dossier,group_topnet_agent,1,1,1,0
 access_chef_dossier,access.topnet.dossier,topnet_agence.model_topnet_dossier,group_topnet_chef,1,1,1,0
-access_responsable_dossier,access.topnet.dossier,topnet_agence.model_topnet_dossier,group_topnet_responsable,1,0,0,0
+access_responsable_dossier,access.topnet.dossier,topnet_agence.model_topnet_dossier,group_topnet_responsable,0,0,0,0
 
 access_agence_clt,access.topnet.agence,topnet_agence.model_topnet_agence,group_topnet_client,0,0,0,0
 access_agence_coor,access.topnet.agence,topnet_agence.model_topnet_agence,group_topnet_coor,1,1,1,1
 access_agence_agent,access.topnet.agence,topnet_agence.model_topnet_agence,group_topnet_agent,1,0,0,0
 access_agence_chef,access.topnet.agence,topnet_agence.model_topnet_agence,group_topnet_chef,1,0,0,0
-access_agence_responsable,access.topnet.agence,topnet_agence.model_topnet_agence,group_topnet_responsable,1,0,0,0
+access_agence_responsable,access.topnet.agence,topnet_agence.model_topnet_agence,group_topnet_responsable,0,0,0,0
 
 access_abonnement_clt,access.abonnement,topnet_agence.model_abonnement,group_topnet_client,1,1,1,0
 access_abonnement_agent,access.abonnement,topnet_agence.model_abonnement,group_topnet_agent,1,1,1,0
 access_abonnement_chef,access.abonnement,topnet_agence.model_abonnement,group_topnet_chef,1,1,1,0
-access_abonnement_responsable,access.abonnement,topnet_agence.model_abonnement,group_topnet_responsable,1,0,0,0
+access_abonnement_responsable,access.abonnement,topnet_agence.model_abonnement,group_topnet_responsable,0,0,0,0
 access_abonnement_coor,access.abonnement,topnet_agence.model_abonnement,group_topnet_coor,1,1,1,1
 
 access_rdv_clt,access.abonnement,topnet_agence.model_rdv,group_topnet_client,1,1,1,1
