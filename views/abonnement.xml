@@ -51,8 +51,8 @@
 
 
                             <group string="Etat du dossier ">
-                                <field name="etat" attrs="{'readonly':[('topnet_agence.group_topnet_client')]}"/>
-                                <field name="agent_id"/>
+                                <field name="etat" />
+                                <field name="agent_id" readonly="1"/>
 
 <!--                                <field name="agent_rel"/>-->
                             </group>
