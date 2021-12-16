@@ -52,7 +52,7 @@
 
                             <group string="Etat du dossier ">
                                 <field name="etat" />
-                                <field name="agent_id" readonly="1"/>
+                                <field name="agent_id" />
 
 <!--                                <field name="agent_rel"/>-->
                             </group>
@@ -163,6 +163,17 @@
             </field>
         </record>
         <record id="view_order_form_cust_ref_readonly" model="ir.ui.view">
+            <field name="name">abonnement form</field>
+            <field name="model">abonnement</field>
+            <field name="inherit_id" ref="abonnement_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('topnet_agence.group_topnet_client') ])]"/>
+            <field name="arch" type="xml">
+                <field name='agent_id' position="attributes">
+                    <attribute name="attrs">{'readonly':1}</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_order_form_cust_ref_readonly_abonnement" model="ir.ui.view">
             <field name="name">abonnement form</field>
             <field name="model">abonnement</field>
             <field name="inherit_id" ref="abonnement_form"/>
