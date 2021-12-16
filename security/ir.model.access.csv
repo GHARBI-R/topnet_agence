@@ -4,7 +4,7 @@ access_client_coor,access.coor.fiche,topnet_agence.model_client_fiche,group_topn
 access_client_clt,access.client.fiche,topnet_agence.model_client_fiche,group_topnet_client,1,1,1,0
 access_client_agent,access.agent.fiche,topnet_agence.model_client_fiche,group_topnet_agent,1,1,0,0
 access_client_chef,access.chef.fiche,topnet_agence.model_client_fiche,group_topnet_chef,1,0,0,0
-access_client_responsable,access.responsable.fiche,topnet_agence.model_client_fiche,group_topnet_responsable,1,0,0,0
+access_client_responsable,access.responsable.fiche,topnet_agence.model_client_fiche,group_topnet_responsable,0,0,0,0
 
 access_agent_coor,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_coor,1,1,1,1
 access_agent_clt,access.agent.fiche,topnet_agence.model_agent_fiche,group_topnet_client,0,0,0,0
