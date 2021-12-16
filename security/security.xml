@@ -41,9 +41,18 @@
             <field name="category_id" ref="module_category_topnet"/>
             <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
+         <record model="ir.rule" id="agent_see_his_own_fiche">
+            <field name="name">agent voit seulement ses fiches</field>
+            <field name="model_id" ref="model_agent_fiche"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_topnet_agent'))]"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="perm_read" eval="1"/>
+        </record>
 
-
-        <record model="ir.rule" id="client_see_his_own_client1">
+        <record model="ir.rule" id="client_see_his_own_fiche">
             <field name="name">voir seulement ses fiches</field>
             <field name="model_id" ref="model_client_fiche"/>
             <field name="domain_force">[('user_id','=',user.id)]</field>
@@ -64,7 +73,7 @@
             <field name="perm_read" eval="1"/>
         </record>
         <record model="ir.rule" id="client_see_his_own_dossiers">
-            <field name="name">voir seulement ses abonnements</field>
+            <field name="name">voir seulement ses dossiers</field>
             <field name="model_id" ref="model_topnet_dossier"/>
             <field name="domain_force">[('raison_clt1.user_id','=',user.id)]</field>
             <field name="groups" eval="[(4, ref('group_topnet_client'))]"/>
@@ -84,6 +93,9 @@
             <field name="perm_unlink" eval="1"/>
             <field name="perm_read" eval="1"/>
         </record>
+
+
+
 
     </data>
 </odoo>
