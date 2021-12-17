@@ -1,6 +1,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import date
 import re
 
 
@@ -66,9 +67,17 @@ class Agent(models.Model):
         for obj in self:
             if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", obj.email) == None:
                 raise ValidationError("Vérifier votre adresse mail principale : %s" % obj.email)
-
-
         return True
+
+    @api.constrains('expiration_date')
+    def _check_expiration_date(self):
+        if self.expiration_date <= datetime.today():
+            raise ValidationError('Expiration date must be after today.')
+
+    @api.constrains('naissance')
+    def _check_naissance(self):
+        if self.naissance >= date.today():
+            raise ValidationError('la date naissance est invalide ')
 
     @api.model
     def create(self, values):
