@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import datetime
 import re
 
 
@@ -94,7 +95,7 @@ class Abonnements (models.Model):
         [('Fibre Optique', 'Fibre Optique'), ('Voip Access', 'Voip Access'), ('Rapido Pro', 'Rapido Pro')],
         default="Fibre Optique", required=True)
     debit = fields.Selection([("20", "20"), ("30", "30"), ("50", "50"), ("100", "100")], default="20", required=True)
-    abonnement_date = fields.Date(string='Date')
+    abonnement_date = fields.Date(string='Date',default=datetime.today(),  readonly=True)
     @api.constrains('tel2', 'fax2')
     def check_name(self):
         for rec in self:

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5f8699c9-aa58-400f-8164-bf0fe96101f2" name="Default Changelist" comment="version finale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/abonnement.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/abonnement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/abonnement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/abonnement.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +233,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639663908843</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="version finale">
+      <created>1639665384858</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1639665384858</updated>
+    </task>
+    <task id="LOCAL-00027" summary="version finale">
+      <created>1639665406421</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1639665406421</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,6 +260,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sprint" />

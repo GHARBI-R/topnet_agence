@@ -51,10 +51,10 @@
 
 
                             <group string="Etat du dossier ">
-                                <field name="etat" />
-                                <field name="agent_id" />
+                                <field name="etat"/>
+                                <field name="agent_id"/>
 
-<!--                                <field name="agent_rel"/>-->
+                                <!--                                <field name="agent_rel"/>-->
                             </group>
                         </group>
                         <group>
@@ -168,8 +168,7 @@
             <field name="inherit_id" ref="abonnement_form"/>
             <field name="groups_id" eval="[(6, 0, [ref('topnet_agence.group_topnet_client') ])]"/>
             <field name="groups_id" eval="[(6, 0, [ref('topnet_agence.group_topnet_agent') ])]"/>
-            <field name="groups_id" eval="[(6, 0, [ref('topnet_agence.group_chef') ])]"/>
-            <field name="groups_id" eval="[(6, 0, [ref('topnet_agence.group_responsable') ])]"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_topnet_responsable') ])]"/>
             <field name="arch" type="xml">
                 <field name='agent_id' position="attributes">
                     <attribute name="attrs">{'readonly':1}</attribute>
