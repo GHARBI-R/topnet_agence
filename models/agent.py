@@ -69,10 +69,6 @@ class Agent(models.Model):
                 raise ValidationError("Vérifier votre adresse mail principale : %s" % obj.email)
         return True
 
-    @api.constrains('expiration_date')
-    def _check_expiration_date(self):
-        if self.expiration_date <= datetime.today():
-            raise ValidationError('Expiration date must be after today.')
 
     @api.constrains('naissance')
     def _check_naissance(self):
