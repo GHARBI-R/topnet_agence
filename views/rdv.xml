@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <kanban>
                 <field name="rdv_id"/>
+                <field name="abonnement_rel"/>
                 <field name="client_id"/>
                 <field name="rdv_date_debut"/>
                 <field name="rdv_date_fin"/>
@@ -71,16 +72,16 @@
         <field name="arch" type="xml">
             <form>
                 <div class="oe_title">
-                            <h1>
-                                <field name="rdv_id" readonly="1"/>
-                            </h1>
+                    <h1>
+                        <field name="rdv_id" readonly="1"/>
+                    </h1>
 
-                        </div>
-<!--                <header>-->
-<!--                    <field name="rdv_id"/>-->
-<!--                </header>-->
+                </div>
+                <!--                <header>-->
+                <!--                    <field name="rdv_id"/>-->
+                <!--                </header>-->
                 <group>
-
+                    <field name="abonnement_rel"/>
                     <field name="rdv_raison_rel"/>
                     <field name="motif"/>
                     <field name="rdv_date_debut"/>

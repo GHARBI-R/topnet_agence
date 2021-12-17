@@ -22,7 +22,7 @@
                 <form>
                     <header>
                         <h1>
-                            <field name="id_contrat" readonly="1"/>
+<!--                            <field name="id_contrat" readonly="1"/>-->
                         </h1>
 
                     </header>

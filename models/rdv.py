@@ -15,6 +15,9 @@ class Rdv(models.Model):
     rdv_raison_rel = fields.Char(string='Raison sociale', related='rdv_clt.raison')
     email_clt_rel = fields.Char(string='Email principal ', related='rdv_clt.email_pri')
 
+    abonnement_rdv = fields.Many2one(comodel_name='abonnement', string='Abonnement')
+    abonnement_rel = fields.Char(string='Abonnement N° ', related='abonnement_rdv.id_abonnement')
+
     motif = fields.Text(string='motif du rendez-vous', required=True)
     rdv_date_debut = fields.Datetime(string='Date Debut')
     rdv_date_fin = fields.Datetime(string='Date fin')
