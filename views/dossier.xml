@@ -30,7 +30,7 @@
 
                         <group>
                             <group>
-                                <!--                                <field name="id_contrat_related"/>-->
+                                <field name="abonnement_rel"/>
                                 <field name="raison_clt1_rel"/>
                                 <field name="doc1"/>
                                 <field name="doc2"/>

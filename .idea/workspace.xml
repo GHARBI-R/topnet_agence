@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5f8699c9-aa58-400f-8164-bf0fe96101f2" name="Default Changelist" comment="version finale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/abonnement.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/abonnement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/rdv.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/rdv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/dossier.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/dossier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/fiche_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/fiche_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/dossier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/dossier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/fiche_client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/fiche_client.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/rdv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/rdv.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639755245435</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="version finale">
+      <created>1639771010606</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1639771010606</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
