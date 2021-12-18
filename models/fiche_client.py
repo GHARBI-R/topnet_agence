@@ -78,6 +78,7 @@ class Clients(models.Model):
 
     active = fields.Boolean(string="Active", default=True)
 
+
     @api.constrains('name', 'tel', 'fax', 'Tel_admi', 'gsm_admi', 'nom_tech', 'tel_tech',
                     'gsm_tech')
     def check_name(self):
