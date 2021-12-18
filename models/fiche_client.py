@@ -36,7 +36,6 @@ class Clients(models.Model):
     id_contrat = fields.Char(string='Code client ', required=True, copy=False, readonly=True,
                              index=True, default=lambda self: _('New'))
 
-
     user_id = fields.Many2one('res.users', ondelete='set null', string="User", index=True)
     abonnements_ids = fields.One2many(comodel_name='abonnement', inverse_name='raison_clt', string="Abonnements")
     contrat_ids = fields.One2many(comodel_name='abonnement', inverse_name='contrat_clt', string="contrat")
