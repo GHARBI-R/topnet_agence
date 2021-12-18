@@ -84,7 +84,6 @@ class Clients(models.Model):
         for rec in self:
             if len(str(abs(self.tel))) != 8:
                 raise ValidationError(_('Numéro de tel doit contenir seulement 8 chiffres'))
-
             elif len(str(abs(self.fax))) != 8:
                 raise ValidationError(_('Nméro de fax doit contenir seulement 8 chiffres'))
             elif len(str(abs(self.Tel_admi))) != 8:
